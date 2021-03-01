@@ -14,6 +14,7 @@ import com.avalon.vflapp.R
 import com.avalon.vflapp.databinding.FragmentQRBinding
 import com.avalon.vflapp.util.DataState
 import com.google.zxing.WriterException
+import kotlinx.coroutines.CoroutineScope
 import kotlin.math.min
 
 private const val TAG = "QRFragment"
@@ -33,27 +34,40 @@ class QRFragment : Fragment() {
         _binding = FragmentQRBinding.inflate(inflater, container, false)
         val view = binding?.root
         subscribeObservers()
+        binding?.qrSwipeRefresh?.isRefreshing = true
         viewModel.getQR()
+        binding?.qrSwipeRefresh?.setOnRefreshListener {
+            viewModel.getQR()
+        }
         return view
     }
 
     private fun subscribeObservers() {
         viewModel.code.observe(requireActivity()) { dataState ->
             when(dataState) {
-                is DataState.Success -> createQR(dataState.data)
+                is DataState.Success -> {
+                    binding?.qrDateTv?.text = dataState.data.date
+                    binding?.qrSwipeRefresh?.isRefreshing = false
+                    createQR(dataState.data.code)
+                }
                 
                 is DataState.Error -> {
                     Log.d(TAG, "subscribeObservers: ${dataState.exception}")
+                    binding?.qrSwipeRefresh?.isRefreshing = false
                     toast("İstek başarısız")
+                }
+                is DataState.Cancel -> {
+                    binding?.qrSwipeRefresh?.isRefreshing = false
+                    toast("İstek iptal edildi")
                 }
             }
         }
     }
 
     private fun createQR(code: String) {
-        val display = requireActivity().display
         val point = Point()
-        val windowManager = requireActivity().getSystemService(WINDOW_SERVICE) as WindowManager
+
+        val display = requireActivity().display
         display?.getSize(point)
 
         val w = point.x
