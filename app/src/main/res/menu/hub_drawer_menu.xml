@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/QRFragment"
+            android:title="Karekod"
+            android:icon="@drawable/ic_qr"/>
+        <item
+            android:id="@+id/noticeFragment"
+            android:title="Duyurular"
+            android:icon="@drawable/ic_notice"/>
+        <item
+            android:id="@+id/questionFragment"
+            android:title="Sorular"
+            android:icon="@drawable/ic_question"/>
+    </group>
+</menu>

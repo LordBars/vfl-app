@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/hub_nav_graph"
+    app:startDestination="@id/QRFragment">
+
+    <fragment
+        android:id="@+id/noticeFragment"
+        android:name="com.avalon.vflapp.ui.hub.NoticeFragment"
+        android:label="Duyurular"
+        tools:layout="@layout/fragment_notice" />
+    <fragment
+        android:id="@+id/QRFragment"
+        android:name="com.avalon.vflapp.ui.hub.QRFragment"
+        android:label="Karekod"
+        tools:layout="@layout/fragment_q_r" />
+    <fragment
+        android:id="@+id/questionFragment"
+        android:name="com.avalon.vflapp.ui.hub.QuestionFragment"
+        android:label="Sorular"
+        tools:layout="@layout/fragment_question" />
+</navigation>
