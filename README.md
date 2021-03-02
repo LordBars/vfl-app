@@ -40,8 +40,8 @@
 #### Technical Details
 
 * Development Environment is Android Studio.
-* The language is definetly English while programming. Such as; variable names, function names, files, packages, id's etc.
-* The language is English commit messages. The reason why we use English is most technical details are English.
-* The programming language for client is Kotlin. You can use Java too but review period is requires longer time and change of approvation is less than Kotlin. Fortunately, you could convert your Java to Kotlin code.
+* The language should be used while programming is definetly English. Such as; variable names, function names, files, packages, id's etc.
+* The language in commit messages is English. The reason is most technical components are spelled and written in English.
+* The programming language for client is Kotlin. You can use Java too but review period requires longer time and the chance of approvation is less than Kotlin. Fortunately, you could convert your Java to Kotlin code.
 *  Firebase is used for server side.
-*  The actions that client couldn't are made by Firebase Cloud Functions service. The programming language for it is Javascript and runtime engine is Node.js.
+*  The actions that client couldn't do, are done by Firebase Cloud Functions service. The programming language for it is Javascript and runtime engine is Node.js.
