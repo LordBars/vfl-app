@@ -1,6 +1,6 @@
 # vfl-app
 
-### *-TR-
+### -TR-
 
 #### Açıklama:
 
@@ -23,7 +23,7 @@
 * Sunucu tarafında Firebase kullanılır.
 * İstemcinin yapamadığı eylemler Firebase Cloud Functions servisi ile yapılır. Buradaki programlama dili Javascript'tir, çalışma motoru ise Node.js'dir.
 
-### *-En-
+### -En-
 
 #### Overview
 
@@ -35,7 +35,7 @@
   - To provide announcements on a platform which can be controlled by school.
   - To provide questions that from parents and students are answered in a short period of time.
 * Making a connection with other projects:
-  - Suppose that, you want to create a educational cryptology game for school. You prepared game schemas and rules. You want to make it accessible from devices. Whether you put it on website or present it theoratically. If your idea get approved, you can avoid the trouble and cost of creating a new application and we can apply your project into the application. 
+  - Suppose that, you want to create a educational cryptology game for school. You prepared game schemas and rules. You want to make it accessible from devices. Either you put it on website or present it theoratically. If your idea get approved, you can avoid the trouble and cost of creating a new application and we can apply your project into the application. 
 
 #### Technical Details
 
