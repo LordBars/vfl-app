@@ -31,7 +31,9 @@ NOT: _VFL-App henüz yapım aşamasında projede birçok değişiklik olabilir.
   #### Geliştirme:
   Android Studio'yu açtığınızda böyle bir ekran görüyorsanız: 
   ![im1](https://i.imgur.com/g115pKL.png) Sadece Get From Version Control'e tıklayın.
-  Eğer zaten bir projeniz açıksa: File -> New -> Project From Version Control. Her iki durumda da bununla karşılaşmanız gerekiyor:
+  
+  Eğer zaten bir projeniz açıksa: File -> New -> Project From Version Control yapınız. 
+  Her iki durumda da bununla karşılaşmanız gerekiyor:
   ![im2](https://i.imgur.com/JY67Mmf.png)
   Sonra URL kısmına: https://github.com/LordBars/vfl-app, Directory kısmına ise: C:\Users\KULLANICIADIN\AndroidStudioProjects\clone\VFLApp yazın ve geliştirmeyi başardınız!
   
