@@ -28,4 +28,4 @@ and make a connection with other projects. This repository involves Android vers
     - To provide questions that from parents and students are answered in a short period of time.
   * Making a connection with other projects:
     - Suppose that, you want to create a educational cryptology game for school. You prepared game schemas and rules. You want to make it accessible from devices. Either you put it on website or present it theoratically. If your idea get approved, you can avoid the trouble and cost of creating a new application and we can apply your project into the application.
-### Visit here(https://lordbars.github.io/vfl-app) for details and more.
+### Visit [here](https://lordbars.github.io/vfl-app) for details and more.
