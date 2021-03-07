@@ -20,4 +20,9 @@
         android:name="com.avalon.vflapp.ui.hub.QuestionFragment"
         android:label="Sorular"
         tools:layout="@layout/fragment_question" />
+    <activity
+        android:id="@+id/adminActivity"
+        android:name="com.avalon.vflapp.ui.admin.AdminActivity"
+        android:label="activity_admin"
+        tools:layout="@layout/activity_admin" />
 </navigation>
