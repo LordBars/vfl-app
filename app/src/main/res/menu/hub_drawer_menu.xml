@@ -14,5 +14,10 @@
             android:id="@+id/questionFragment"
             android:title="Sorular"
             android:icon="@drawable/ic_question"/>
+        <item
+            android:id="@+id/adminActivity"
+            android:enabled="false"
+            android:icon="@drawable/ic_admin_panel"
+            android:title="Yönetici" />
     </group>
 </menu>
