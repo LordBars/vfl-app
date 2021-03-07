@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/admin_nav_graph"
+    app:startDestination="@id/usersFragment">
+
+    <fragment
+        android:id="@+id/usersFragment"
+        android:name="com.avalon.vflapp.ui.admin.UsersFragment"
+        android:label="Kullanıcılar"
+        tools:layout="@layout/fragment_users" />
+    <fragment
+        android:id="@+id/addUserFragment"
+        android:name="com.avalon.vflapp.ui.admin.AddUserFragment"
+        android:label="Kullanıcı Ekle"
+        tools:layout="@layout/fragment_add_user" />
+</navigation>
