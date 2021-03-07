@@ -3,8 +3,13 @@ const admin = require("firebase-admin");
 
 admin.initializeApp();
 
-const isAuthorized = (claims) => (claims === "admin" ||
-claims === "superadmin");
+
+const isAuthorized = (callerUser) => {
+  const isAdmin = callerUser.customClaims.admin;
+  const isSuperAdmin = callerUser.customClaims.superadmin;
+  return (isAdmin || isSuperAdmin);
+};
+
 
 const isRoleValid = (role) => [
   "admin",
@@ -14,29 +19,35 @@ const isRoleValid = (role) => [
   "teacher",
 ].includes(role);
 
+
 exports.addUser = functions.https.onCall(async (data, context) => {
   const auth = admin.auth();
 
+  const jData = JSON.parse(data);
+
+  console.log("DATA: "+jData);
+  console.log("DATA TYPE: "+typeof(jData));
+
   const callerUid = context.auth.uid;
   const callerUser = await auth.getUser(callerUid);
-  const callerRole = await callerUser.customClaims.role;
-
-  console.log("User Role:", callerRole);
-
-  if (!isAuthorized(callerRole)) {
+  if (!isAuthorized(callerUser)) {
     throw new functions.https.HttpsError(
         "Unauthorized Access:", "User is not authenticated as admin");
   }
 
-  const name = data.name;
-  const email = data.email;
-  const password = data.password;
-  const role = data.role;
-  const number = data.number || 0;
+  const name = jData.name;
+  const email = jData.email;
+  const password = jData.password;
+  const role = jData.role;
+  const number = jData.number || 0;
+
+  console.log("NAME: "+name);
+
+  console.log("ROLE: "+role);
 
   if (!isRoleValid(role)) {
-    throw new functions.https.HttpsError(
-        "Invalid Role", "The given role is not a valid role.");
+    throw new functions.https.HttpsError(`Invalid Role: ${role}`,
+        "The given role:"+role+" is not a valid role.");
   }
 
   const user = await auth.createUser({
@@ -50,12 +61,13 @@ exports.addUser = functions.https.onCall(async (data, context) => {
   const uid = user.uid;
 
   await auth.setCustomUserClaims(uid, {
-    role: role,
+    role: true,
     number: number,
   });
 
   return {result: "success"};
 });
+
 
 exports.deleteUser = functions.https.onCall( async (data, context) => {
   const callerUid = context.auth.uid;
@@ -86,14 +98,6 @@ exports.deleteUser = functions.https.onCall( async (data, context) => {
 
   return {result: "success"};
 });
-
-// // Create and Deploy Your First Cloud Functions
-// // https://firebase.google.com/docs/functions/write-firebase-functions
-//
-// exports.helloWorld = functions.https.onRequest((request, response) => {
-//   functions.logger.info("Hello logs!", {structuredData: true});
-//   response.send("Hello from Firebase!");
-// });  */
 
 
 exports.fetchUsers = functions.https.onCall( async (data, context) => {
@@ -129,10 +133,4 @@ exports.fetchUsers = functions.https.onCall( async (data, context) => {
   listAllUsers();
 
   return {result: users};
-});
-
-exports.createSuperAdmin = functions.https.onRequest((req, res) => {
-  admin.auth().setCustomUserClaims("YIJjXMXJ7VZsokVmj03S9RqUcRq1", {
-    role: 'superadmin'
-  });
 });
