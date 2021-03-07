@@ -3,7 +3,6 @@ package com.avalon.vflapp.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -14,8 +13,6 @@ import com.avalon.vflapp.util.DataState
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-
-private const val TAG = "LoginActivity"
 
 @ExperimentalCoroutinesApi
 @AndroidEntryPoint
@@ -35,14 +32,12 @@ class LoginActivity : AppCompatActivity() {
             val email = edtVFLMail.text.toString()
             val password = edtPassword.text.toString()
             val user = AuthUser(email, password)
-            Log.d(TAG, "onCreate: Email: $email, Password: $password")
             viewModel.signIn(user)
         }
     }
 
     private fun subscribeObservers() {
         viewModel.dataState.observe(this) { dataState ->
-            Log.d(TAG, "subscribeObservers: DataState: $dataState")
             when(dataState) {
                 is DataState.Success -> {
                     binding.progressBar.visibility = View.GONE
@@ -64,11 +59,9 @@ class LoginActivity : AppCompatActivity() {
                                     toast("Zaman aşımına uğradı")
                                 }
                             }
-                            Log.d(TAG, "subscribeObservers: "+dataState. exception.errorCode)
                         }
                     }
                     binding.progressBar.visibility = View.GONE
-                    Log.d(TAG, "dataState:Error: ${dataState.exception}")
                 }
                 is DataState.Cancel -> {
                     binding.progressBar.visibility = View.GONE
