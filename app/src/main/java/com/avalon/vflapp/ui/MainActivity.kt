@@ -7,7 +7,6 @@ import com.avalon.vflapp.databinding.ActivityMainBinding
 import com.avalon.vflapp.ui.hub.HubActivity
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.google.firebase.ktx.initialize
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 
 @ExperimentalCoroutinesApi
@@ -15,7 +14,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Firebase.initialize(this)
         if (Firebase.auth.currentUser != null) {
             val intent = Intent(this, HubActivity::class.java)
             startActivity(intent)
