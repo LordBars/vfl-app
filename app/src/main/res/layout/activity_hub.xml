@@ -39,6 +39,7 @@
         android:id="@+id/hub_nav_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        app:headerLayout="@layout/hub_nav_view_head"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:menu="@menu/hub_drawer_menu"/>
